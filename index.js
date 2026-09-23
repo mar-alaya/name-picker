@@ -15,11 +15,13 @@ const available_names = [
 const enrolled_users = ["WilderDönner", "GeisterJäger"];
 
 function createUser(input) {
-  if (enrolled_users.includes(input)) {
-    feedback.innerText = "Username already exists. Write or generate other.";
+  if (enrolled_users.includes(input) || !input) {
+    feedback.innerText = "Username not valid. Write or generate other.";
+    feedback.style.color = "red";
   } else {
     enrolled_users.push(input);
     feedback.innerText = "Username created. You are now enrolled!";
+    feedback.style.color = "green";
     user_input.value = "";
 
     let li = document.createElement("li");
